@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 14, 39;
+  --background-end-rgb: 15, 23, 42;
+  
+  /* METATOPIA Brand Colors */
+  --primary-purple: 99, 102, 241;
+  --primary-cyan: 6, 182, 212;
+  --accent-pink: 236, 72, 153;
+  --accent-gold: 245, 158, 11;
+  
+  /* Gaming Theme Colors */
+  --neon-blue: 0, 255, 255;
+  --neon-purple: 138, 43, 226;
+  --neon-green: 57, 255, 20;
+  --electric-pink: 255, 20, 147;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    135deg,
+    rgb(var(--background-start-rgb)) 0%,
+    rgb(var(--background-end-rgb)) 100%
+  );
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgb(var(--primary-purple)), rgb(var(--primary-cyan)));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgb(var(--primary-cyan)), rgb(var(--primary-purple)));
+}
+
+/* Glow Effects */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(var(--primary-purple), 0.3);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(var(--primary-cyan), 0.3);
+}
+
+.glow-neon {
+  box-shadow: 
+    0 0 5px rgba(var(--neon-blue), 0.5),
+    0 0 10px rgba(var(--neon-blue), 0.3),
+    0 0 15px rgba(var(--neon-blue), 0.2);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, rgb(var(--primary-purple)), rgb(var(--primary-cyan)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gaming {
+  background: linear-gradient(135deg, rgb(var(--neon-purple)), rgb(var(--electric-pink)), rgb(var(--neon-blue)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(var(--neon-blue), 0.5);
+}
+
+/* Gaming Buttons */
+.btn-gaming {
+  @apply relative px-8 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900;
+}
+
+.btn-gaming:hover {
+  @apply shadow-lg;
+  box-shadow: 0 10px 25px rgba(var(--primary-purple), 0.3);
+}
+
+.btn-gaming:active {
+  @apply scale-95;
+}
+
+/* Gaming Cards */
+.card-gaming {
+  @apply relative p-6 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl transition-all duration-300;
+}
+
+.card-gaming:hover {
+  @apply border-purple-500/50 bg-slate-800/70;
+  box-shadow: 0 8px 32px rgba(var(--primary-purple), 0.15);
+}
+
+/* Focus States for Gaming Theme */
+.focus-gaming:focus {
+  @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-slate-900;
+}
+
+/* Animated Background */
+.animated-bg {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e293b);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating Particles */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, rgb(var(--neon-blue)), rgb(var(--neon-purple)));
+  border-radius: 50%;
+  animation: float 6s linear infinite;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Loading Animation */
+.loading-spinner {
+  @apply inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin;
+}
+
+/* Text Animations */
+.text-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .btn-gaming {
+    @apply px-6 py-2 text-sm;
+  }
+  
+  .card-gaming {
+    @apply p-4;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg,
+  .particle,
+  .text-shimmer {
+    animation: none;
+  }
+  
+  .btn-gaming:hover,
+  .card-gaming:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card-gaming {
+    @apply border-white/50;
+  }
+  
+  .btn-gaming {
+    @apply border border-white;
+  }
+}
